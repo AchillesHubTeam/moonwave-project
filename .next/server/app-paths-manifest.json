@@ -1,9 +1,0 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js",
-  "/dashboard/[guildId]/page": "app/dashboard/[guildId]/page.js",
-  "/dashboard/[guildId]/settings/page": "app/dashboard/[guildId]/settings/page.js",
-  "/dashboard/[guildId]/subscription/page": "app/dashboard/[guildId]/subscription/page.js",
-  "/dashboard/page": "app/dashboard/page.js",
-  "/dashboard/[guildId]/moderation/page": "app/dashboard/[guildId]/moderation/page.js"
-}
