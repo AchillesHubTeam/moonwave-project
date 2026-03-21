@@ -1,0 +1,71 @@
+{
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-4a462cecab786e93.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-38b49df12a94ee57.js",
+      "static/chunks/main-app-9f142443d1fd175f.js",
+      "static/chunks/app/_not-found/page-da3d606c7f38a7fc.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-4a462cecab786e93.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-38b49df12a94ee57.js",
+      "static/chunks/main-app-9f142443d1fd175f.js",
+      "static/css/88f6bdb61cb88f7d.css",
+      "static/chunks/app/layout-a609f67de6404620.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-4a462cecab786e93.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-38b49df12a94ee57.js",
+      "static/chunks/main-app-9f142443d1fd175f.js",
+      "static/chunks/619-ba102abea3e3d0e4.js",
+      "static/chunks/app/page-bea9ee559a66b688.js"
+    ],
+    "/dashboard/layout": [
+      "static/chunks/webpack-4a462cecab786e93.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-38b49df12a94ee57.js",
+      "static/chunks/main-app-9f142443d1fd175f.js",
+      "static/chunks/619-ba102abea3e3d0e4.js",
+      "static/chunks/app/dashboard/layout-bea9ee559a66b688.js"
+    ],
+    "/dashboard/[guildId]/page": [
+      "static/chunks/webpack-4a462cecab786e93.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-38b49df12a94ee57.js",
+      "static/chunks/main-app-9f142443d1fd175f.js",
+      "static/chunks/619-ba102abea3e3d0e4.js",
+      "static/chunks/app/dashboard/[guildId]/page-bea9ee559a66b688.js"
+    ],
+    "/dashboard/[guildId]/settings/page": [
+      "static/chunks/webpack-4a462cecab786e93.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-38b49df12a94ee57.js",
+      "static/chunks/main-app-9f142443d1fd175f.js",
+      "static/chunks/app/dashboard/[guildId]/settings/page-09d9e1c6b0d13791.js"
+    ],
+    "/dashboard/[guildId]/subscription/page": [
+      "static/chunks/webpack-4a462cecab786e93.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-38b49df12a94ee57.js",
+      "static/chunks/main-app-9f142443d1fd175f.js",
+      "static/chunks/app/dashboard/[guildId]/subscription/page-09d9e1c6b0d13791.js"
+    ],
+    "/dashboard/page": [
+      "static/chunks/webpack-4a462cecab786e93.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-38b49df12a94ee57.js",
+      "static/chunks/main-app-9f142443d1fd175f.js",
+      "static/chunks/app/dashboard/page-09d9e1c6b0d13791.js"
+    ],
+    "/dashboard/[guildId]/moderation/page": [
+      "static/chunks/webpack-4a462cecab786e93.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-38b49df12a94ee57.js",
+      "static/chunks/main-app-9f142443d1fd175f.js",
+      "static/chunks/app/dashboard/[guildId]/moderation/page-09d9e1c6b0d13791.js"
+    ]
+  }
+}
