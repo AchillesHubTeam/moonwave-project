@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   serverExternalPackages: ["mongoose"],
   experimental: {
-    serverComponentsExternalPackages: ["mongoose"],
+    serverExternalPackages: ["mongoose"],
   },
 };
 
