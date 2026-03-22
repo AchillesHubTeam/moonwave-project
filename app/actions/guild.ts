@@ -16,7 +16,7 @@ export interface GuildConfigData {
 
 export async function getGuildConfig(guildId: string): Promise<GuildConfigData | null> {
   await connectDB();
-  const doc = await GuildConfig.findOne({ guildId }).lean();
+  const doc: any = await GuildConfig.findOne({ guildId }).lean();
   if (!doc) return null;
   return {
     guildId: String(doc.guildId ?? ""),
@@ -33,7 +33,7 @@ export async function updateGuildConfig(
   updates: Partial<GuildConfigData>
 ): Promise<GuildConfigData | null> {
   await connectDB();
-  const doc = await GuildConfig.findOneAndUpdate(
+  const doc: any = await GuildConfig.findOneAndUpdate(
     { guildId },
     updates,
     { new: true }
