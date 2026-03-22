@@ -6,7 +6,6 @@ export const metadata: Metadata = {
   title: "MoonWave",
   description: "Enterprise Discord Bot Dashboard",
 };
-export const runtime = "edge";
 export default function RootLayout({
   children,
 }: {
