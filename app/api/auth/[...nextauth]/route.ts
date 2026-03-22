@@ -1,11 +1,5 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
-import { config } from "dotenv";
-import { resolve } from "node:path";
-
-// Load bot .env
-const envPath = resolve(process.cwd(), "..", ".env");
-config({ path: envPath });
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -16,18 +10,16 @@ export const authOptions: NextAuthOptions = {
     })
   ],
   callbacks: {
-    async jwt({ token, account }) {
-      if (account) {
-        token.accessToken = account.access_token;
-      }
+    async jwt({ token, account }: any) {
+      if (account) token.accessToken = account.access_token;
       return token;
     },
-    async session({ session, token }) {
-      session.accessToken = token.accessToken as string;
+    async session({ session, token }: any) {
+      session.accessToken = token.accessToken;
       return session;
     }
   },
-  secret: process.env.NEXTAUTH_SECRET || "moonwave_default_secret_please_change"
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);

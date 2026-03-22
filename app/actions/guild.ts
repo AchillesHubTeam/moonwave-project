@@ -1,9 +1,18 @@
 "use server";
 
 import { connectDB } from "../../lib/db";
-import { GuildConfigModel } from "../../src/database/models/guild-config.model";
+import mongoose from "mongoose";
 
-const GuildConfig = GuildConfigModel;
+const guildConfigSchema = new mongoose.Schema({
+  guildId: { type: String, required: true, unique: true },
+  prefix: { type: String, default: "!" },
+  moderationEnabled: { type: Boolean, default: true },
+  autoModLevel: { type: String, default: "off" },
+  customDomain: { type: String, default: "" },
+  premiumTier: { type: String, default: "free" },
+}, { timestamps: true });
+
+const GuildConfig = mongoose.models["GuildConfig"] ?? mongoose.model("GuildConfig", guildConfigSchema);
 
 export interface GuildConfigData {
   guildId: string;
@@ -16,7 +25,7 @@ export interface GuildConfigData {
 
 export async function getGuildConfig(guildId: string): Promise<GuildConfigData | null> {
   await connectDB();
-  const doc = await GuildConfig.findOne({ guildId }).lean();
+  const doc: any = await GuildConfig.findOne({ guildId }).lean();
   if (!doc) return null;
   return {
     guildId: String(doc.guildId ?? ""),
@@ -28,23 +37,7 @@ export async function getGuildConfig(guildId: string): Promise<GuildConfigData |
   };
 }
 
-export async function updateGuildConfig(
-  guildId: string,
-  updates: Partial<GuildConfigData>
-): Promise<GuildConfigData | null> {
+export async function updateGuildConfig(guildId: string, data: Partial<GuildConfigData>): Promise<void> {
   await connectDB();
-  const doc = await GuildConfig.findOneAndUpdate(
-    { guildId },
-    updates,
-    { new: true }
-  ).lean();
-  if (!doc) return null;
-  return {
-    guildId: String(doc.guildId ?? ""),
-    prefix: String(doc.prefix ?? "!"),
-    moderationEnabled: Boolean(doc.moderationEnabled),
-    autoModLevel: String(doc.autoModLevel ?? "off"),
-    customDomain: String(doc.customDomain ?? ""),
-    premiumTier: String(doc.premiumTier ?? "free"),
-  };
+  await GuildConfig.findOneAndUpdate({ guildId }, data, { upsert: true });
 }
