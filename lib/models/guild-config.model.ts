@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, models } from "mongoose";
 
 const guildConfigSchema = new Schema(
   {
@@ -48,4 +48,4 @@ const guildConfigSchema = new Schema(
   { timestamps: true }
 );
 
-export const GuildConfigModel = model("GuildConfig", guildConfigSchema);
+export const GuildConfigModel = models.GuildConfig || model("GuildConfig", guildConfigSchema);
