@@ -1,3 +1,4 @@
+"use client";
 import { connectDB } from "../../lib/db";
 import { GuildConfigModel } from "../../lib/models/guild-config.model";
 import Link from "next/link";
