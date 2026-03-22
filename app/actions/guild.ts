@@ -1,30 +1,9 @@
 "use server";
 
 import { connectDB } from "../../lib/db";
-import mongoose, { Document, Model } from "mongoose";
+import { GuildConfigModel } from "../../src/database/models/guild-config.model.js";
 
-// Định nghĩa Interface cho dữ liệu trong Database
-interface IGuildConfig extends Document {
-  guildId: string;
-  prefix: string;
-  moderationEnabled: boolean;
-  autoModLevel: string;
-  customDomain: string;
-  premiumTier: string;
-}
-
-const guildConfigSchema = new mongoose.Schema({
-  guildId: String,
-  prefix: String,
-  moderationEnabled: Boolean,
-  autoModLevel: String,
-  customDomain: String,
-  premiumTier: String,
-}, { timestamps: true });
-
-// Ép kiểu cho Model để TypeScript nhận diện các trường khi dùng .lean()
-const GuildConfig: Model<IGuildConfig> = 
-  mongoose.models["GuildConfig"] ?? mongoose.model<IGuildConfig>("GuildConfig", guildConfigSchema);
+const GuildConfig = GuildConfigModel;
 
 export interface GuildConfigData {
   guildId: string;
@@ -37,9 +16,7 @@ export interface GuildConfigData {
 
 export async function getGuildConfig(guildId: string): Promise<GuildConfigData | null> {
   await connectDB();
-  // Dùng as bất kỳ để TS không bắt bẻ khi map dữ liệu từ lean()
-  const doc = await GuildConfig.findOne({ guildId }).lean() as any;
-  
+  const doc = await GuildConfig.findOne({ guildId }).lean();
   if (!doc) return null;
   return {
     guildId: String(doc.guildId ?? ""),
@@ -60,8 +37,7 @@ export async function updateGuildConfig(
     { guildId },
     updates,
     { new: true }
-  ).lean() as any;
-
+  ).lean();
   if (!doc) return null;
   return {
     guildId: String(doc.guildId ?? ""),
