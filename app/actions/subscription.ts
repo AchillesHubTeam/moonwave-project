@@ -24,10 +24,9 @@ export interface SubscriptionData {
 
 export async function getSubscription(guildId: string): Promise<SubscriptionData | null> {
   await connectDB();
-  // THÊM: as any vào đây
   const doc = await Subscription.findOne({ guildId, status: "active" })
     .sort({ createdAt: -1 })
-    .lean() as any;
+    .lean();
 
   if (!doc) return null;
   return {

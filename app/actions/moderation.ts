@@ -1,18 +1,7 @@
 "use server";
 
 import { connectDB } from "../../lib/db";
-import mongoose from "mongoose";
-
-const moderationLogSchema = new mongoose.Schema({
-  guildId: String,
-  moderatorId: String,
-  targetId: String,
-  action: String,
-  reason: String,
-  timestamp: { type: Date, default: Date.now },
-});
-
-const ModerationLog = mongoose.models["ModerationLog"] ?? mongoose.model("ModerationLog", moderationLogSchema);
+import { ModerationLogModel } from "../../src/database/models/moderation-log.model.js";
 
 export interface ModerationLogData {
   _id: string;
@@ -26,25 +15,24 @@ export interface ModerationLogData {
 
 export async function getModerationLogs(guildId: string, limit = 50): Promise<ModerationLogData[]> {
   await connectDB();
-  // THÊM: as any[] vào đây
-  const docs = await ModerationLog.find({ guildId })
-    .sort({ timestamp: -1 })
+  const docs = await ModerationLogModel.find({ guildId })
+    .sort({ createdAt: -1 })
     .limit(limit)
-    .lean() as any[];
+    .lean();
 
-  return docs.map((doc) => ({
+  return docs.map((doc: any) => ({
     _id: String(doc._id),
     guildId: String(doc.guildId ?? ""),
     moderatorId: String(doc.moderatorId ?? ""),
     targetId: String(doc.targetId ?? ""),
     action: String(doc.action ?? ""),
     reason: String(doc.reason ?? ""),
-    timestamp: (doc.timestamp as Date)?.toISOString?.() ?? new Date().toISOString(),
+    timestamp: (doc.createdAt as Date)?.toISOString?.() ?? new Date().toISOString(),
   }));
 }
 
 export async function deleteModerationLog(logId: string): Promise<boolean> {
   await connectDB();
-  const result = await ModerationLog.deleteOne({ _id: logId });
+  const result = await ModerationLogModel.deleteOne({ _id: logId });
   return result.deletedCount > 0;
 }
