@@ -7,7 +7,7 @@ import { resolve } from "node:path";
 const envPath = resolve(process.cwd(), "..", ".env");
 config({ path: envPath });
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   providers: [
     DiscordProvider({
       clientId: process.env.DISCORD_CLIENT_ID || "",
