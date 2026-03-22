@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, models } from "mongoose";
 import { v4 as uuidv4 } from "uuid";
 
 const moderationLogSchema = new Schema(
@@ -53,4 +53,4 @@ const moderationLogSchema = new Schema(
   { timestamps: true }
 );
 
-export const ModerationLogModel = model("ModerationLog", moderationLogSchema);
+export const ModerationLogModel = models.ModerationLog || model("ModerationLog", moderationLogSchema);
