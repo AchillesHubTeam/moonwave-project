@@ -3,7 +3,7 @@ import DiscordProvider from "next-auth/providers/discord";
 import { config } from "dotenv";
 import { resolve } from "node:path";
 
-// Load bot .env
+export const runtime = "edge";
 const envPath = resolve(process.cwd(), "..", ".env");
 config({ path: envPath });
 
