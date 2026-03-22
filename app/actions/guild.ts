@@ -1,7 +1,7 @@
 "use server";
 
 import { connectDB } from "../../lib/db";
-import { GuildConfigModel } from "../../lib/models/guild-config.model.js";
+import { GuildConfigModel } from "../../lib/models/guild-config.model";
 
 const GuildConfig = GuildConfigModel;
 

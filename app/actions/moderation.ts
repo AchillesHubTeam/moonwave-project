@@ -1,7 +1,7 @@
 "use server";
 
 import { connectDB } from "../../lib/db";
-import { ModerationLogModel } from "../../lib/models/moderation-log.model.js";
+import { ModerationLogModel } from "../../lib/models/moderation-log.model";
 
 export interface ModerationLogData {
   _id: string;
